@@ -1,0 +1,38 @@
+application: vronpass
+version: 1
+runtime: go
+api_version: go1
+
+default_expiration: "30d"
+
+handlers:
+- url: /index\.html
+  static_files: index.html
+  upload: index\.html
+  login: optional
+  secure: always
+
+- url: /
+  static_files: index.html
+  upload: index\.html
+  login: optional
+  secure: always
+
+- url: /offline\.manifest
+  static_files: offline.manifest
+  upload: offline\.manifest
+  login: optional
+  secure: always
+  mime_type: text/cache-manifest
+
+- url: /(apple-touch-icon-\d+x\d+\.png)
+  static_files: \1
+  upload: apple-touch-icon-\d+x\d+\.png
+  login: optional
+  secure: always
+
+- url: /.*
+  script: _go_app
+  login: required
+  secure: always
+  auth_fail_action: redirect
