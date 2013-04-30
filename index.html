@@ -210,6 +210,7 @@ var globIsOnline = true;
 function getdata(ok, faila) {
 	// Try to get the data from the server, if we can't we assume that this means that
 	// we are in offline mode and thus use the prefetched data
+
 	$.ajax({
 		url: globServer + "get/",
 		cache: false,
@@ -237,7 +238,7 @@ function getdata(ok, faila) {
 				ok(da);
 			}
 		}
-		});
+	});
 }
 
 // Set up everything
