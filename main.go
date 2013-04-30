@@ -42,9 +42,6 @@ func fg(w http.ResponseWriter, r *http.Request) {
 	// We simply store the information under the username!
 	path := u.Email
 
-	c.Infof(path)	
-	c.Infof("HEJ PA DIG %v", path)
-
 	k := datastore.NewKey(c, "Entity", path, 0, nil)
 	e := new(Entity)
 	if err := datastore.Get(c, k, e); err!= nil {
